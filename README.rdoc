@@ -25,6 +25,10 @@ These methods will return a hash containing the data returned by the API. (TODO:
 
 TODO: write tests
 
+== ACKNOWLEDGEMENTS 
+
+Code heavily inspired/influenced by philnash's bitly gem https://github.com/philnash/bitly
+
 == Contributing to googl
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet

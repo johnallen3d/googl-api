@@ -15,12 +15,12 @@ module Googl
     headers 'Content-Type' => 'application/json; charset=utf-8'
       
     def initialize(api_key)
-      @api_key = api_key
+      @api_key = { :key => api_key }
     end
     
     def shorten(url)
       # when providing a hash for the body the url is being URI Encoded and causing an error
-      self.class.post('/url', :body => "{ \"longUrl\" => \"#{url}\" }").parsed_response
+      self.class.post('/url', :query => @api_key, :body => "{ \"longUrl\" => \"#{url}\" }").parsed_response
     end
     
     def extend(url)
