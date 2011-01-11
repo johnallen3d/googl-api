@@ -21,8 +21,10 @@ googl.shorten('http://www.google.com')
 googl.expand('http://goo.gl/fbsS')
 googl.analytics('http://goo.gl/fbsS') or googl.analytics('http://goo.gl/fbsS', 'FULL')
 
-These methods will return a hash containing the data returned by the API. (TODO: return an object?)
+These methods will return a response object containing the short/long url and other values provide by the API
 
+TODO: fix api key usage (broken in api?)
+TODO: implement analytics object
 TODO: write tests
 
 == ACKNOWLEDGEMENTS 
