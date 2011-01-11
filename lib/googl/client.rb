@@ -4,7 +4,7 @@ module Googl
   API_URL     = 'https://www.googleapis.com/urlshortener/'
   API_VERSION = 'v1'
 
-  def new(api_key)
+  def self.new(api_key)
     Client.new(api_key)
   end
 
