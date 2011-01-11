@@ -23,7 +23,7 @@ module Googl
       
       # when providing a hash for the body the url is being URI Encoded and causing an error
       self.class.post('/url', :body => "{ \"longUrl\" => \"#{url}\" }").each do |r|
-        response.new(r)
+        response = Googl::Response.new(r)
       end
       
       return response
