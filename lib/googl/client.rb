@@ -19,14 +19,15 @@ module Googl
     end
     
     def shorten(url)
-      response = nil
-      
-      # when providing a hash for the body the url is being URI Encoded and causing an error
-      self.class.post('/url', :body => "{ \"longUrl\" => \"#{url}\" }").each do |r|
-        response = Googl::Response.new(r)
-      end
-      
-      return response
+      Googl::Response.new(self.class.post('/url', :body => "{ \"longUrl\" => \"#{url}\" }"))
+      # response = nil
+      # 
+      # # when providing a hash for the body the url is being URI Encoded and causing an error
+      # self.class.post('/url', :body => "{ \"longUrl\" => \"#{url}\" }").each do |r|
+      #   response = Googl::Response.new(r)
+      # end
+      # 
+      # return response
       
       # api key not working at this time
       # self.class.post('/url', :query => @api_key, :body => "{ \"longUrl\" => \"#{url}\" }").parsed_response
