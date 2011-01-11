@@ -27,6 +27,7 @@ module Googl
         response.kind = r['kind']
         response.id = r['id']
         response.longUrl = r['longUrl']
+        response.raw = r
       end
       
       return response
