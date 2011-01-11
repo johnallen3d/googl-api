@@ -1,4 +1,4 @@
-= googl
+= googl-api
 
 A very simple Ruby wrapper for the Google Url Shortener.
 
@@ -7,13 +7,13 @@ api docs - http://code.google.com/apis/urlshortener/index.html
 
 == INSTALLATION:
 
-gem install googl
+gem install googl-api
 
 == USAGE:
 
 Create a googl client using your API key:
 
-googl = Googl.new(api_key)
+googl = GooglApi.new(api_key)
 
 Then use the client to shorten, extend or review the analytics for a URL.
 
@@ -31,7 +31,7 @@ TODO: write tests
 
 Code heavily inspired/influenced by philnash's bitly gem https://github.com/philnash/bitly
 
-== Contributing to googl
+== Contributing to googl-api
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
