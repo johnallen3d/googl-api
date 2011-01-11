@@ -19,16 +19,32 @@ module Googl
     end
     
     def shorten(url)
+      response = Response.new
+      
       # when providing a hash for the body the url is being URI Encoded and causing an error
-      self.class.post('/url', :query => @api_key, :body => "{ \"longUrl\" => \"#{url}\" }").parsed_response
+      self.class.post('/url', :body => "{ \"longUrl\" => \"#{url}\" }").each do |r|
+        response = Response.new
+        response.kind = r['kind']
+        response.id = r['id']
+        response.longUrl = r['longUrl']
+      end
+      
+      return response
+      
+      # api key not working at this time
+      # self.class.post('/url', :query => @api_key, :body => "{ \"longUrl\" => \"#{url}\" }").parsed_response
     end
     
-    def extend(url)
+    def expand(url)
       self.class.get('/url', :query => { :shortUrl => url }).parsed_response
+      # api key not working at this time
+      # self.class.get('/url', :query => @api_key.merge({ :shortUrl => url })).parsed_response
     end
     
     def analytics(url, projection = "FULL")
       self.class.get('/url', :query => { :shortUrl => url, :projection => projection }).parsed_response
+      # api key not working at this time
+      # self.class.get('/url', :query => @api_key.merge({ :shortUrl => url, :projection => projection })).parsed_response
     end
   end
 end

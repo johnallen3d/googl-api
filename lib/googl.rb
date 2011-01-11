@@ -1,3 +1,2 @@
-# $:.unshift(File.dirname(__FILE__))
-
 require 'googl/client'
+require 'googl/response'
