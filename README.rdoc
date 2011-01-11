@@ -1,6 +1,29 @@
 = googl
 
-Description goes here.
+A very simple Ruby wrapper for the Google Url Shortener.
+
+service - http://goo.gl/
+api docs - http://code.google.com/apis/urlshortener/index.html
+
+== INSTALLATION:
+
+gem install googl
+
+== USAGE:
+
+Create a googl client using your API key:
+
+googl = Googl.new(api_key)
+
+Then use the client to shorten, extend or review the analytics for a URL.
+
+googl.shorten('http://www.google.com')
+googl.expand('http://goo.gl/fbsS')
+googl.analytics('http://goo.gl/fbsS') or googl.analytics('http://goo.gl/fbsS', 'FULL')
+
+These methods will return a hash containing the data returned by the API. (TODO: return an object?)
+
+TODO: write tests
 
 == Contributing to googl
  
