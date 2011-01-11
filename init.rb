@@ -1,1 +1,1 @@
-require 'googl'
+require 'googl-api'

@@ -12,8 +12,8 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "googl"
-  gem.homepage = "http://github.com/johnallen3d/googl"
+  gem.name = "googl-api"
+  gem.homepage = "http://github.com/johnallen3d/googl-api"
   gem.license = "MIT"
   gem.summary = %Q{A ruby wrapper for the goo.gl URL Shortner}
   gem.description = %Q{A very simple ruby wrapper for the goo.gl URL Shortening service}
@@ -23,7 +23,7 @@ Jeweler::Tasks.new do |gem|
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
   #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
   #  gem.add_development_dependency 'rspec', '> 1.2.3'
-  gem.add_dependency "httparty", ">= 0"
+  gem.add_dependency "httparty", ">= 0.6.1"
 end
 Jeweler::RubygemsDotOrgTasks.new
 
@@ -48,7 +48,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "googl #{version}"
+  rdoc.title = "googl-api #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end

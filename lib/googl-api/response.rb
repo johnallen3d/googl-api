@@ -1,4 +1,4 @@
-module Googl
+module GooglApi
   class Response
     attr_accessor :kind, :id, :longUrl, :status, :created, :analytics, :raw
 
