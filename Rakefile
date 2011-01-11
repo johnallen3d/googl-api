@@ -15,14 +15,15 @@ Jeweler::Tasks.new do |gem|
   gem.name = "googl"
   gem.homepage = "http://github.com/johnallen3d/googl"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A ruby wrapper for the goo.gl URL Shortner}
+  gem.description = %Q{A very simple ruby wrapper for the goo.gl URL Shortening service}
   gem.email = "john@threedogconsulting.com"
   gem.authors = ["John Allen"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
   #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
   #  gem.add_development_dependency 'rspec', '> 1.2.3'
+  gem.add_dependency "httparty", ">= 0"
 end
 Jeweler::RubygemsDotOrgTasks.new
 
