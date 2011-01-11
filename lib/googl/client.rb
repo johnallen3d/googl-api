@@ -19,15 +19,11 @@ module Googl
     end
     
     def shorten(url)
-      response = Response.new
+      response
       
       # when providing a hash for the body the url is being URI Encoded and causing an error
       self.class.post('/url', :body => "{ \"longUrl\" => \"#{url}\" }").each do |r|
-        response = Response.new
-        response.kind = r['kind']
-        response.id = r['id']
-        response.longUrl = r['longUrl']
-        response.raw = r
+        response.new(r)
       end
       
       return response
