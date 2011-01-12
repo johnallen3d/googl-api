@@ -19,20 +19,35 @@ module GooglApi
     end
     
     def shorten(url)
-      GooglApi::Response.new(self.class.post('/url', :body => "{ \"longUrl\" => \"#{url}\" }").parsed_response)
-      # GooglApi::Response.new(self.class.post('/url', :query => @api_key, :body => "{ \"longUrl\" => \"#{url}\" }").parsed_response)
+      load_respose(self.class.post('/url', :body => "{ \"longUrl\" => \"#{url}\" }"))
+      # api key not working at this time
+      # load_respose(self.class.post('/url', :query => @api_key, :body => "{ \"longUrl\" => \"#{url}\" }"))
     end
     
     def expand(url)
-      GooglApi::Response.new(self.class.get('/url', :query => { :shortUrl => url }).parsed_response)
+      load_respose(self.class.get('/url', :query => { :shortUrl => url }))
       # api key not working at this time
-      # GooglApi::Response.new(self.class.get('/url', :query => @api_key.merge({ :shortUrl => url })).parsed_response)
+      # load_respose(self.class.get('/url', :query => @api_key.merge({ :shortUrl => url })))
     end
     
     def analytics(url, projection = "FULL")
-      GooglApi::Response.new(self.class.get('/url', :query => { :shortUrl => url, :projection => projection }).parsed_response)
+      load_respose(self.class.get('/url', :query => { :shortUrl => url, :projection => projection }))
       # api key not working at this time
-      # GooglApi::Response.new(self.class.get('/url', :query => @api_key.merge({ :shortUrl => url, :projection => projection })).parsed_response)
+      # load_respose(self.class.get('/url', :query => @api_key.merge({ :shortUrl => url, :projection => projection })))
+    end
+  private
+    def load_respose(resp)
+      raise GooglError.new(resp.message, resp.code) if resp.code != 200
+      GooglApi::Response.new(resp.parsed_response)
+    end
+  end
+  
+  class GooglError < StandardError
+    attr_reader :code
+    alias :msg :message
+    def initialize(msg, code)
+      @code = code
+      super("#{msg} - '#{code}'")
     end
   end
 end
