@@ -11,8 +11,13 @@ require 'test/unit'
 require 'shoulda'
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib', 'googl-api'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'googl'
+require 'httparty'
+require 'googl-api'
 
 class Test::Unit::TestCase
+  def api_key
+    'test_key'
+  end
 end
