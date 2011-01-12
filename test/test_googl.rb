@@ -79,5 +79,4 @@ class TestGoogl < Test::Unit::TestCase
         end
       end
     end
-
 end
