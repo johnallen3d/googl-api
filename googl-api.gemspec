@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{googl-api}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["John Allen"]
@@ -25,7 +25,6 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "googl-api.gemspec",
-    "googl.gemspec",
     "init.rb",
     "lib/googl-api.rb",
     "lib/googl-api/client.rb",
