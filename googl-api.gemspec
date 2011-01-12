@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "googl-api.gemspec",
     "googl.gemspec",
     "init.rb",
     "lib/googl-api.rb",
