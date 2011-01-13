@@ -4,7 +4,7 @@ module GooglApi
   API_URL     = 'https://www.googleapis.com/urlshortener/'
   API_VERSION = 'v1'
 
-  def self.new(api_key)
+  def self.new(api_key = nil)
     Client.new(api_key)
   end
 
@@ -14,29 +14,23 @@ module GooglApi
     base_uri "#{API_URL}#{API_VERSION}"
     headers 'Content-Type' => 'application/json; charset=utf-8'
       
-    def initialize(api_key)
-      @api_key = { :key => api_key }
+    def initialize(api_key = nil)
+      @api_key = { :key => api_key } unless api_key.blank?
     end
     
     def shorten(url)
       raise ArgumentError.new("A URL to shorten is required") if url.blank?
-      # load_respose(self.class.post('/url', :body => "{ \"longUrl\" => \"#{url}\" }"))
-      # api key not working at this time
       load_respose(self.class.post('/url', :query => @api_key, :body => "{ \"longUrl\" => \"#{url}\" }"))
     end
     
     def expand(url)
       raise ArgumentError.new("A URL to expand is required") if url.blank?
-      load_respose(self.class.get('/url', :query => { :shortUrl => url }))
-      # api key not working at this time
-      # load_respose(self.class.get('/url', :query => @api_key.merge({ :shortUrl => url })))
+      load_respose(self.class.get('/url', :query => @api_key.merge({ :shortUrl => url })))
     end
     
     def analytics(url, projection = "FULL")
       raise ArgumentError.new("A URL to check analytics on is required") if url.blank?
-      load_respose(self.class.get('/url', :query => { :shortUrl => url, :projection => projection }))
-      # api key not working at this time
-      # load_respose(self.class.get('/url', :query => @api_key.merge({ :shortUrl => url, :projection => projection })))
+      load_respose(self.class.get('/url', :query => @api_key.merge({ :shortUrl => url, :projection => projection })))
     end
   private
     def load_respose(resp)
