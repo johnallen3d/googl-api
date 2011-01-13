@@ -21,6 +21,9 @@ module GooglApi
     def long_url
       self.longUrl
     end
-
+    
+    def qr_code
+      "#{short_url}.qr" unless short_url.blank?
+    end
   end
 end
