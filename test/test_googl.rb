@@ -26,6 +26,9 @@ class TestGoogl < Test::Unit::TestCase
           should "save the long url" do
             assert_equal "http://ruby-lang.org/", @url.long_url
           end
+          should "provide a qr code url" do
+            assert_equal "http://goo.gl/p2Jpa.qr", @url.qr_code
+          end
         end
         context "no links" do
           should "raise an ArgumentError" do
@@ -75,6 +78,22 @@ class TestGoogl < Test::Unit::TestCase
         should "raise an ArgumentError" do
           assert_raise ArgumentError do
             @client.shorten
+          end
+        end
+      end
+    end
+    context "using the googl-api client without api key" do
+      setup do
+        @client = GooglApi.new
+      end
+
+      context "shortening" do
+        context "a single link" do
+          setup do
+            @url = @client.shorten('http://ruby-lang.org/')
+          end
+          should "return a GooglApi::Response" do
+            assert_kind_of GooglApi::Response, @url
           end
         end
       end
