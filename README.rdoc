@@ -2,7 +2,7 @@
 
 A very simple Ruby wrapper for the Google Url Shortener.
 
-* service - http://goo.gl/
+* service - http://goo.gl
 * api docs - http://code.google.com/apis/urlshortener/index.html
 
 == INSTALLATION:
@@ -11,11 +11,12 @@ A very simple Ruby wrapper for the Google Url Shortener.
 
 == USAGE:
 
-Create a googl client using your API key:
+Create a googl client using your API key and/or with ClientLogin auth information:
 
-  googl = GooglApi.new('your api key')
+  googl = GooglApi.new(:api_key => 'your_api_key', :email => 'google_email', :password => 'valid_password')
+  
 
-Then use the client to shorten, extend or review the analytics for a URL.
+Then use the client to shorten, extend or review the analytics for a URL.  If authentication is provided the short_url provided will be specific to the given user and will show up in the users history.
 
   googl.shorten('http://www.google.com')
   googl.expand('http://goo.gl/fbsS')
@@ -23,9 +24,15 @@ Then use the client to shorten, extend or review the analytics for a URL.
 
 These methods will return a response object containing the short/long url and other values provide by the API
 
-* TODO: fix api key usage (broken in goo.gl api?)
-* TODO: implement analytics object
-* TODO: implement usage method
+To access a users history you must provide authentication information
+
+  googl = GooglApi.new(:email => 'google_email', :password => 'valid_password')
+  googl.history
+  
+This method returns a hash containing the authenticated users history
+
+* TODO: implement analytics and history response objects
+* TODO: implement oauth
 
 == ACKNOWLEDGEMENTS 
 

@@ -15,7 +15,13 @@ module GooglApi
     headers 'Content-Type' => 'application/json; charset=utf-8'
       
     def initialize(options = {})
+      # set api key if provided
       @api_key = { :key => options[:api_key] } if options.has_key?(:api_key)
+
+      # set auth token for client login if provided
+      if options[:email] && options[:password] && @token = ClientLogin.authenticate(options[:email], options[:password])
+        self.class.headers.merge!("Authorization" => "GoogleLogin auth=#{@token}")
+      end
     end
     
     def shorten(url)
@@ -31,6 +37,11 @@ module GooglApi
     def analytics(url, projection = "FULL")
       raise ArgumentError.new("A URL to check analytics on is required") if url.blank?
       load_respose(self.class.get('/url', :query => @api_key.merge({ :shortUrl => url, :projection => projection })))
+    end
+
+    def history
+      raise ArgumentError.new("Doing a history search requires a Client Login (or eventually OAuth to be set)") unless @token
+      self.class.get('/url/history')
     end
   private
     def load_respose(resp)
