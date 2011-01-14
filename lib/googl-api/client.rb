@@ -4,8 +4,8 @@ module GooglApi
   API_URL     = 'https://www.googleapis.com/urlshortener/'
   API_VERSION = 'v1'
 
-  def self.new(api_key = nil)
-    Client.new(api_key)
+  def self.new(options = {})
+    Client.new(options)
   end
 
   class Client
@@ -14,8 +14,8 @@ module GooglApi
     base_uri "#{API_URL}#{API_VERSION}"
     headers 'Content-Type' => 'application/json; charset=utf-8'
       
-    def initialize(api_key = nil)
-      @api_key = { :key => api_key } unless api_key.blank?
+    def initialize(options = {})
+      @api_key = { :key => options[:api_key] } if options.has_key?(:api_key)
     end
     
     def shorten(url)

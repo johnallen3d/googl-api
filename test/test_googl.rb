@@ -3,13 +3,13 @@ require 'helper'
 class TestGoogl < Test::Unit::TestCase
   context "googl-api module" do
       should "create a new googl-api client" do
-        c = GooglApi.new(api_key)
+        c = GooglApi.new(:api_key => api_key)
         assert_equal GooglApi::Client, c.class
       end
     end
     context "using the googl-api client" do
       setup do
-        @client = GooglApi.new(api_key)
+        @client = GooglApi.new(:api_key => api_key)
       end
 
       context "shortening" do
