@@ -11,7 +11,7 @@ A very simple Ruby wrapper for the Google Url Shortener.
 
 == USAGE:
 
-Create a googl client using your API key and/or with ClientLogin auth information:
+Create a googl client using your API key and/or with ClientLogin auth information.  (note:  you will need to "Activate" the "URL Shortener API" on this page to retrieve and user your api_key: https://code.google.com/apis/console/b/0/#project:1090911256926:overview )
 
   googl = GooglApi.new(:api_key => 'your_api_key', :email => 'google_email', :password => 'valid_password')
   
