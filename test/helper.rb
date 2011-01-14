@@ -17,17 +17,14 @@ require 'googl-api'
 
 class Test::Unit::TestCase
   def api_key
-    # 'test_key'
-    'AIzaSyDIENPX6ZJoRFIS4Ix-ev5fOjRh8pNME9Y'
+    'test_key'
   end
   
   def email
-    # "email"
-    "jallen7usa@gmail.com"
+    "email"
   end
   
   def password
-    # "password"
-    "5bVq06B=0x"
+    "password"
   end
 end
