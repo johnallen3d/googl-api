@@ -26,7 +26,7 @@ module GooglApi
     
     def shorten(url)
       raise ArgumentError.new("A URL to shorten is required") if url.blank?
-      load_respose(self.class.post('/url', :query => @api_key, :body => "{ \"longUrl\" => \"#{url}\" }"))
+      load_respose(self.class.post('/url', :query => @api_key, :body => "{ \"longUrl\": \"#{url}\" }"))
     end
     
     def expand(url)
