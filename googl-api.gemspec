@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{googl-api}
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["John Allen"]
-  s.date = %q{2011-01-13}
+  s.date = %q{2011-03-02}
   s.description = %q{A very simple ruby wrapper for the goo.gl URL Shortening service}
   s.email = %q{john@threedogconsulting.com}
   s.extra_rdoc_files = [
